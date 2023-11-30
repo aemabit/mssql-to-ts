@@ -1,0 +1,19 @@
+{
+  "name": "mssql-to-ts",
+  "version": "1.0.0",
+  "description": "Generate Types from your Microsoft SQL Database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "tsx index.ts"
+  },
+  "author": "aemabit",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.10.1",
+    "knex": "^3.0.1",
+    "tedious": "^16.6.1",
+    "tsx": "^4.6.1"
+  }
+}
