@@ -7,9 +7,9 @@ export type DataTypeSQL = {
   IS_NULLABLE: string | null
 }
 
-export type TableViewSQL = DataTypeSQL & {
-  TABLE_NAME: string
-  COLUMN_NAME: string
+export type SchemaSQL = DataTypeSQL & {
+  SCHEMA_NAME: string
+  ATTRIBUTE_NAME: string
   ORDINAL_POSITION: number
   COLUMN_DEFAULT: string | null
   NUMERIC_SCALE: number | null
@@ -34,8 +34,8 @@ WHERE DOMAIN_NAME IS NOT NULL
 
 export const TablesAndViewsQuerySQL = `
 SELECT
-  TABLE_NAME,
-  COLUMN_NAME,
+  TABLE_NAME as SCHEMA_NAME,
+  COLUMN_NAME as ATTRIBUTE_NAME,
   DATA_TYPE,
   DOMAIN_NAME,
   ORDINAL_POSITION,
@@ -59,11 +59,11 @@ WHERE is_user_defined = 0
 
 export const StoreProceduresQuerySQL = `
 SELECT
-  SPECIFIC_NAME as TABLE_NAME,
+  SPECIFIC_NAME as SCHEMA_NAME,
+  PARAMETER_NAME as ATTRIBUTE_NAME,
   ORDINAL_POSITION,
-  PARAMETER_NAME as COLUMN_NAME,
   DATA_TYPE,
-  USER_DEFINED_TYPE_NAME
+  USER_DEFINED_TYPE_NAME as DOMAIN_NAME
 FROM information_schema.parameters
 WHERE IS_RESULT = 'NO'
 `

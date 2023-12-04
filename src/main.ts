@@ -1,4 +1,4 @@
-import Knex from "knex";
+import Knex, { Knex as K } from "knex";
 import { generateKeyTs, generateTS } from "./types";
 import {
     DataTypesQuerySQL,
@@ -6,39 +6,38 @@ import {
     StoreProceduresQuerySQL,
     TablesAndViewsQuerySQL,
 } from "./SQL";
-import { DataTypeSQL, NativeSQLDataType, TableViewSQL } from "./SQL";
+import { DataTypeSQL, NativeSQLDataType, SchemaSQL } from "./SQL";
 
-const knexConfig = {
-    client: "mssql",
-    connection: {
-        host: "localhost",
-        user: "sa",
-        password: "example_123",
-        database: "outwestluxury_test",
-    },
-};
+export interface Config {
+    knexConfig: K.Config;
+    capitalizeTypes?: boolean; // default: true
+}
 
-const knex = Knex(knexConfig);
-
-export const gen = async () => {
+export const gen = async ({ knexConfig, capitalizeTypes = true }: Config) => {
     try {
+        const knex = Knex(knexConfig);
+
         // const nativeDataTypes: NativeSQLDataType[] = await knex.raw(
         //     NativeDataTypesQuerySQL
         // );
 
         const dataTypes: DataTypeSQL[] = await knex.raw(DataTypesQuerySQL);
 
-        const tablesAndViews: TableViewSQL[] = await knex.raw(
+        const tablesAndViews: SchemaSQL[] = await knex.raw(
             TablesAndViewsQuerySQL
         );
 
-        // const storeProcedures: TableViewSQL[] = await knex.raw(
-        //     StoreProceduresQuerySQL
-        // );
+        const storeProcedures: SchemaSQL[] = await knex.raw(
+            StoreProceduresQuerySQL
+        );
 
         console.log("Generating types...");
-        const keysTs = generateKeyTs(dataTypes);
-        await generateTS(keysTs, tablesAndViews);
+        const keysTs = generateKeyTs(dataTypes, capitalizeTypes);
+        await generateTS(
+            keysTs,
+            [...tablesAndViews, ...storeProcedures],
+            capitalizeTypes
+        );
 
         console.log("-------------------------");
         console.log("Types generated!");
