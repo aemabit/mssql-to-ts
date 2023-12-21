@@ -45,7 +45,8 @@ export const generateKeyTs = (
 export const generateTS = async (
     keys: KeyTypes,
     tableView: SchemaSQL[],
-    capitalizeTypes: boolean
+    capitalizeTypes: boolean,
+    path: string
 ) => {
     const tablesAndViews = tableView.map((table) => table.SCHEMA_NAME);
 
@@ -57,11 +58,11 @@ export const generateTS = async (
         );
 
         const keysTs = columns.map((column) => {
-            const { type } = transform(column.DOMAIN_NAME || column.DATA_TYPE);
+            const { type } = transform(column.DATA_TYPE);
+
             const isCustomType = keys.keys.find(
                 (k) => k.key === column.DOMAIN_NAME
             );
-
             let attribute = column.ATTRIBUTE_NAME;
 
             if (attribute.includes("@")) {
@@ -90,7 +91,7 @@ export const generateTS = async (
     });
 
     await writeFile(
-        `${__dirname}/generated/ModelTypes.ts`,
+        `${path}/ModelTypes.ts`,
         ts.join("\n").replace(/,/g, "")
     );
 

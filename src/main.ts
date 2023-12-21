@@ -2,24 +2,25 @@ import Knex, { Knex as K } from "knex";
 import { generateKeyTs, generateTS } from "./types";
 import {
     DataTypesQuerySQL,
-    NativeDataTypesQuerySQL,
     StoreProceduresQuerySQL,
     TablesAndViewsQuerySQL,
 } from "./SQL";
 import { DataTypeSQL, NativeSQLDataType, SchemaSQL } from "./SQL";
 
+
+export interface InternalConfig extends K.Config {
+    client: 'mssql';
+}
+
 export interface Config {
-    knexConfig: K.Config;
+    path: string;
+    config: InternalConfig;
     capitalizeTypes?: boolean; // default: true
 }
 
-export const gen = async ({ knexConfig, capitalizeTypes = true }: Config) => {
+export const generator = async ({ config, capitalizeTypes = true, path }: Config) => {
     try {
-        const knex = Knex(knexConfig);
-
-        // const nativeDataTypes: NativeSQLDataType[] = await knex.raw(
-        //     NativeDataTypesQuerySQL
-        // );
+        const knex = Knex(config);
 
         const dataTypes: DataTypeSQL[] = await knex.raw(DataTypesQuerySQL);
 
@@ -31,22 +32,23 @@ export const gen = async ({ knexConfig, capitalizeTypes = true }: Config) => {
             StoreProceduresQuerySQL
         );
 
-        console.log("Generating types...");
         const keysTs = generateKeyTs(dataTypes, capitalizeTypes);
         await generateTS(
             keysTs,
             [...tablesAndViews, ...storeProcedures],
-            capitalizeTypes
+            capitalizeTypes,
+            path
         );
 
-        console.log("-------------------------");
-        console.log("Types generated!");
+        console.log("\n");
+        console.log(`✔ Generated to ${path} successfully!`);
+        console.log("\n");
         return process.exit(0);
     } catch (error) {
-        console.log("-------------------------");
-        console.error("Error generating database!");
+        console.log("");
+        console.error("Error generating types!");
         console.error(error);
-        console.log("-------------------------");
+        console.log("");
         process.exit(1);
     }
 };
