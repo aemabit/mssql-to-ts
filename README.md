@@ -2,6 +2,10 @@
 
 `MSSQL TO TS` is a TypeScript generator tool for converting Microsoft SQL Server (MSSQL) database schemas into TypeScript interfaces. This tool is designed to automate the process of creating TypeScript types based on your database structure, making it easier to work with MSSQL databases in TypeScript projects.
 
+## Getting Started
+
+To start using MSSQL TO TS, simply install the package, configure it to connect to your MSSQL database, and run the generator.
+
 ## Installation
 
 To install `MSSQL TO TS`, you need to have Node.js installed on your system. Once Node.js is installed, you can install `MSSQL TO TS` using npm:
@@ -42,3 +46,13 @@ The generator function accepts a configuration object with the following propert
 
 For more detailed configuration settings and options, see the [Knex.js documentation](https://knexjs.org/guide/).
 
+## Key Features
+
+- **Automated Schema Conversion:** Automatically generates TypeScript interfaces from MSSQL database schemas, ensuring that your TypeScript code remains synchronized with your database structure.
+- **Customizable Output:** Offers options to capitalize type definitions and specify output directories, allowing for a tailored development experience.
+- **Seamless Integration:** Designed to integrate smoothly into existing TypeScript projects, making it an ideal choice for developers working with MSSQL databases.
+- **Enhanced Development Efficiency:** Reduces the manual workload of writing TypeScript interfaces for database tables, speeding up the development process and minimizing human error.
+
+## Ideal Use Case
+
+MSSQL TO TS is perfect for developers and teams working on TypeScript applications that interact with MSSQL databases. Whether you're building enterprise-level applications, working on a personal project, or anywhere in between, this tool can significantly streamline your development process.
