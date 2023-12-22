@@ -1,6 +1,6 @@
 import { writeFile } from "fs/promises";
 import { toCapitalCase, transform } from "./helpers";
-import { DataTypeSQL, SchemaSQL } from "./SQL";
+import { DataTypeSQL, SchemaSQL } from "./sql";
 export type KeyTypes = {
     ts: string[];
     keys: {

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsx index.ts"
+    "start": "tsx index.ts",
+    "build": "tsup"
   },
   "author": "aemabit",
   "license": "ISC",
@@ -14,5 +15,9 @@
     "knex": "^3.0.1",
     "tedious": "^16.6.1",
     "tsx": "^4.6.1"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
   }
 }

@@ -11,7 +11,11 @@ To start using MSSQL TO TS, simply install the package, configure it to connect 
 To install `MSSQL TO TS`, you need to have Node.js installed on your system. Once Node.js is installed, you can install `MSSQL TO TS` using npm:
 
 ```bash
-npm install mssql-to-ts
+npm i mssql-to-ts -D
+# Or Yarn
+yarn add mssql-to-ts --dev
+# Or pnpm
+pnpm add mssql-to-ts -D
 ```
 
 ## Sample Usage

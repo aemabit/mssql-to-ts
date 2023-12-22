@@ -1,4 +1,4 @@
-export const transformValue = {
+export const transformValue: Record<string, string> = {
     bigint: "number",
     binary: "number",
     bit: "number",
@@ -43,7 +43,7 @@ export const transform = (value: string) => {
     return { type };
 };
 
-export const toCapitalCase = (str) => {
+export const toCapitalCase = (str: string) => {
     return str
         .replace(/[_\-]+/g, " ")
         .split(" ")
