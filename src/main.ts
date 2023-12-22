@@ -1,5 +1,5 @@
 import Knex, { Knex as K } from "knex";
-import { generateKeyTs, generateTS } from "./types";
+import { generateKeyTs, generateTS } from "./generator";
 import {
     DataTypesQuerySQL,
     StoreProceduresQuerySQL,
