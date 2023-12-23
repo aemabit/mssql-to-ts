@@ -11,11 +11,11 @@ To start using MSSQL TO TS, simply install the package, configure it to connect 
 To install `MSSQL TO TS`, you need to have Node.js installed on your system. Once Node.js is installed, you can install `MSSQL TO TS` using npm:
 
 ```bash
-npm i mssql-to-ts -D
+npm i mssql-ts -D
 # Or Yarn
-yarn add mssql-to-ts --dev
+yarn add mssql-ts --dev
 # Or pnpm
-pnpm add mssql-to-ts -D
+pnpm add mssql-ts -D
 ```
 
 ## Sample Usage
@@ -37,7 +37,6 @@ generator({
     path: `${__dirname}/src`, // Directory path to host the generated TypeScript interfaces
 });
 ```
-
 ## Configuration
 
 The generator function accepts a configuration object with the following properties:
@@ -50,6 +49,18 @@ The generator function accepts a configuration object with the following propert
 
 For more detailed configuration settings and options, see the [Knex.js documentation](https://knexjs.org/guide/).
 
+## Scripts
+
+To generate the TypeScript interfaces from your MSSQL database schema, you can use the following script command in your project's package.json file:
+
+```
+"scripts": {
+    "mssql-ts-generate": "<ts-node || tsx> main.ts"
+}
+```
+
+Replace `<ts-node || tsx>` with ts-node if you are using standard TypeScript files, or tsx if you are using TypeScript with React JSX syntax. Ensure that main.ts is correctly pointing to your script file that contains the generator function call.
+
 ## Key Features
 
 - **Automated Schema Conversion:** Automatically generates TypeScript interfaces from MSSQL database schemas, ensuring that your TypeScript code remains synchronized with your database structure.
@@ -60,3 +71,4 @@ For more detailed configuration settings and options, see the [Knex.js documenta
 ## Ideal Use Case
 
 MSSQL TO TS is perfect for developers and teams working on TypeScript applications that interact with MSSQL databases. Whether you're building enterprise-level applications, working on a personal project, or anywhere in between, this tool can significantly streamline your development process.
+

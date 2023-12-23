@@ -1,1 +1,1 @@
-export { generator } from "./main";
+export * from "./main";
