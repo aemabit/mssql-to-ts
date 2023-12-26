@@ -1,14 +1,14 @@
-# MSSQL TO TS
+# MSSQL TS
 
-`MSSQL TO TS` is a TypeScript generator tool for converting Microsoft SQL Server (MSSQL) database schemas into TypeScript interfaces. This tool is designed to automate the process of creating TypeScript types based on your database structure, making it easier to work with MSSQL databases in TypeScript projects.
+`MSSQL TS` is a TypeScript generator tool for converting Microsoft SQL Server (MSSQL) database schemas into TypeScript interfaces. This tool is designed to automate the process of creating TypeScript types based on your database structure, making it easier to work with MSSQL databases in TypeScript projects.
 
 ## Getting Started
 
-To start using MSSQL TO TS, simply install the package, configure it to connect to your MSSQL database, and run the generator.
+To start using MSSQL TS, simply install the package, configure it to connect to your MSSQL database, and run the generator.
 
 ## Installation
 
-To install `MSSQL TO TS`, you need to have Node.js installed on your system. Once Node.js is installed, you can install `MSSQL TO TS` using npm:
+To install `MSSQL TS`, you need to have Node.js installed on your system. Once Node.js is installed, you can install `MSSQL TS` using npm:
 
 ```bash
 npm i mssql-ts -D
@@ -21,7 +21,7 @@ pnpm add mssql-ts -D
 ## Sample Usage
 
 ```ts
-import { generator } from "mssql-to-ts";
+import { generator } from "mssql-ts";
 
 generator({
     config: {
@@ -70,5 +70,5 @@ Replace `<ts-node || tsx>` with ts-node if you are using standard TypeScript fil
 
 ## Ideal Use Case
 
-MSSQL TO TS is perfect for developers and teams working on TypeScript applications that interact with MSSQL databases. Whether you're building enterprise-level applications, working on a personal project, or anywhere in between, this tool can significantly streamline your development process.
+MSSQL TS is perfect for developers and teams working on TypeScript applications that interact with MSSQL databases. Whether you're building enterprise-level applications, working on a personal project, or anywhere in between, this tool can significantly streamline your development process.
 

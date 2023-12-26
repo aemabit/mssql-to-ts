@@ -1,6 +1,6 @@
 {
   "name": "mssql-ts",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Generate Types from your Microsoft SQL Database",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

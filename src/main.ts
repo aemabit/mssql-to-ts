@@ -16,12 +16,14 @@ export interface Config {
     path: string;
     config: InternalConfig;
     capitalizeTypes?: boolean; // default: true
+    customFileName?: string; // default: ModelTypes.ts
 }
 
 export const generator = async ({
     config,
     capitalizeTypes = true,
     path,
+    customFileName,
 }: Config) => {
     try {
         const knex = Knex(config);
@@ -41,7 +43,8 @@ export const generator = async ({
             keysTs,
             [...tablesAndViews, ...storeProcedures],
             capitalizeTypes,
-            path
+            path,
+            customFileName
         );
 
         console.log("\n");

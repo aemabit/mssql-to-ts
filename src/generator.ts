@@ -46,7 +46,8 @@ export const generateTS = async (
     keys: KeyTypes,
     tableView: SchemaSQL[],
     capitalizeTypes: boolean,
-    path: string
+    path: string,
+    customFileName?: string
 ) => {
     const tablesAndViews = tableView.map((table) => table.SCHEMA_NAME);
 
@@ -91,7 +92,7 @@ export const generateTS = async (
     });
 
     await writeFile(
-        `${path}/ModelTypes.ts`,
+        `${path}/${customFileName || 'ModelTypes'}.ts`,
         ts.join("\n").replace(/,/g, "")
     );
 

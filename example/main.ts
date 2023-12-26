@@ -12,4 +12,5 @@ generator({
     },
     path: "./",
     capitalizeTypes: true,
+    customFileName: 'customFileName'
 });
